@@ -1,4 +1,4 @@
-# Multi-Head Spectral-Adaptive GNN with Teacher-Student Regularization
+# Multi-Head Spectral-Adaptive GNN 
 
 ## Installation
 
@@ -10,22 +10,18 @@ pip install -r requirements.txt
 
 ```bash
 # Amazon dataset
-python main.py --dataset amazon --num_heads 4 --epoch 100
+python main.py --dataset amazon --train_ratio 0.01 --epoch 100  --num_heads 3  --analyze_heads  --run 10 --contrastive_weight 0.01  --diversity_weight 0.005 --lr 0.015  --cosine_annealing_eta_min 5e-6
+
+# T-finance dataset
+python main.py --dataset tfinance --train_ratio 0.01 --epoch 100 --num_heads 3 -analyze_heads  --run 10 --contrastive_weight 0.01 --diversity_weight 0.005 --lr 0.015 --cosine_annealing_eta_min 5e-6
 
 # Elliptic dataset with custom parameters
-python main.py --dataset elliptic --train_ratio 0.4 --epoch 100 \
-    --num_heads 3 --contrastive_weight 0.01 --diversity_weight 0.005 \
-    --lr 0.015 --analyze_heads --run 10
-
-# Multiple runs for statistical significance
-python main.py --dataset yelp --num_heads 4 --run 5
-```
+python main.py --dataset elliptic --train_ratio 0.4 --epoch 100  --num_heads 3 --analyze_heads  --run 10 --contrastive_weight 0.01  --diversity_weight 0.005 --lr 0.015  --cosine_annealing_eta_min 5e-6   
 
 ## Key Arguments
-
 | Argument | Default | Description |
 |----------|---------|-------------|
-| `--dataset` | amazon | yelp/amazon/tfinance/tsocial/elliptic/tolokers |
+| `--dataset` | amazon | amazon/tfinance/elliptic/tolokers |
 | `--num_heads` | 4 | Number of spectral-adaptive heads |
 | `--order` | 2 | Chebyshev polynomial order |
 | `--epoch` | 100 | Training epochs |
@@ -39,8 +35,7 @@ python main.py --dataset yelp --num_heads 4 --run 5
 
 
 ## Datasets
-
-- **Yelp/Amazon**: DGL built-in fraud detection datasets
-- **TFinance/TSocial/Elliptic**: Place in `./dataset/` folder
+- **Amazon/Tolokers**: DGL built-in fraud detection datasets
+- **TFinance/Elliptic**: Place in `./dataset/` folder
 
 

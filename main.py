@@ -44,11 +44,11 @@ if __name__ == '__main__':
     parser.add_argument("--epoch", type=int, default=100, help="Number of epochs")
     parser.add_argument("--run", type=int, default=5, help="Number of runs")
     
-    parser.add_argument("--contrastive_weight", type=float, default=0.1, help="Weight for contrastive loss (λ_contrast)")
+    parser.add_argument("--contrastive_weight", type=float, default=0.01, help="Weight for contrastive loss (λ_contrast)")
     parser.add_argument("--contrastive_temp", type=float, default=0.1, help="Temperature for contrastive learning")
     parser.add_argument("--diversity_weight", type=float, default=0.05, help="Weight for diversity loss (λ_div)")
     parser.add_argument("--diversity_warmup_epochs", type=int, default=20, help="Epochs for diversity loss warm-up")
-    parser.add_argument("--lr", type=float, default=0.01, help="Learning rate")
+    parser.add_argument("--lr", type=float, default=0.015, help="Learning rate")
     parser.add_argument("--analyze_heads", action="store_true", help="Analyze head specialization after training")
     parser.add_argument("--seed", type=int, default=42, help="Random seed")
     parser.add_argument("--grad_clip", type=float, default=1.0, help="Gradient clipping threshold")
@@ -57,7 +57,7 @@ if __name__ == '__main__':
     parser.add_argument("--warmup_epochs", type=int, default=7, help="Warm-up epochs")
     parser.add_argument("--warmup_start_lr", type=float, default=1e-6, help="Starting LR for warm-up")
     parser.add_argument("--warmup_target_lr", type=float, default=None, help="Target LR after warm-up")
-    parser.add_argument("--cosine_annealing_eta_min", type=float, default=1e-6, help="Min LR after cosine annealing")
+    parser.add_argument("--cosine_annealing_eta_min", type=float, default=5e-6, help="Min LR after cosine annealing")
     parser.add_argument("--warmup_type", type=str, default="linear", choices=["linear", "exponential", "polynomial"])
 
     args = parser.parse_args()
